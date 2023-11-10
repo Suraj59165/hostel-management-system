@@ -1,0 +1,72 @@
+<ng-template #openPopUp let-modal>
+    <div class="model-content">
+        <div class="model-header">
+            <div class="modal-body">
+                <div class="container">
+                    <form #simpleForm="ngForm" validate>
+                        <div class="form-group">
+                            <div class="row">
+                                <h1 class="text-center">{{existingData.id != null ? 'Update Data' : 'Add Data'}}</h1>
+                                <div class="col-md-8">
+                                    <input matInput type="text" class="hide" name="id" ngModel={{existingData.id}}>
+                                    Hostel Code <input matInput type="text" name="hostelCode"
+                                        ngModel={{existingData.hostelCode}} required>
+                                    <div *ngIf="simpleForm.controls['hostelCode'].invalid && simpleForm.controls['hostelCode'].touched"
+                                        class="text-danger">
+                                        Hostel Code is required.
+                                    </div>
+
+                                    Opening Time <input matInput type="time" ngModel class="mt-1" name="opensAt"
+                                         ngModel={{existingData.opensAt}} required>
+                                    <div *ngIf="simpleForm.controls['opensAt'].invalid && simpleForm.controls['opensAt'].touched"
+                                        class="text-danger">
+                                        Fees is required.
+                                    </div>
+
+                                    Closing Time <input matInput type="time" class="mt-1" name="closesAt" required
+                                        [(ngModel)]="existingData.closesAt" required>
+                                    <div *ngIf="simpleForm.controls['closesAt'].invalid && simpleForm.controls['closesAt'].touched"
+                                        class="text-danger">
+                                        Closing Time is required.
+                                    </div>
+
+                                    Fees <input matInput type="number" ngModel class="mt-1" name="fees" required
+                                        ngModel={{existingData.fees}} required>
+                                    <div *ngIf="simpleForm.controls['fees'].invalid && simpleForm.controls['fees'].touched"
+                                        class="text-danger">
+                                        Fees is required.
+                                    </div>
+
+                                    Total Beds <input matInput type="number" name="numberOfBeds" class="mt-1" ngModel
+                                        required ngModel={{existingData.numberOfBeds}} required>
+                                    <div *ngIf="simpleForm.controls['numberOfBeds'].invalid && simpleForm.controls['numberOfBeds'].touched"
+                                        class="text-danger">
+                                        Total Beds is required.
+                                    </div>
+
+                                    Availability <input matInput type="text" ngModel name="available" class="mt-1"
+                                        ngModel={{existingData.available}} required>
+                                    <div *ngIf="simpleForm.controls['available'].invalid&& simpleForm.controls['available'].touched"
+                                        class="text-danger">
+                                        Available is required.
+                                    </div>
+
+                                    Location <input matInput type="text" ngModel name="location" class="mt-1"
+                                        ngModel={{existingData.location}} required>
+                                    <div *ngIf="simpleForm.controls['location'].invalid && simpleForm.controls['location'].touched"
+                                        class="text-danger">
+                                        Location is required.
+                                    </div>
+
+                                    <button class="btn btn-primary mt-2 p-1" (click)="submitForm(simpleForm.value, simpleForm)">{{existingData.id  ? 'Update' : 'Add'}}</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button (click)="modal.close('Save click')" class="btn btn-secondary p-1 ml-5">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
